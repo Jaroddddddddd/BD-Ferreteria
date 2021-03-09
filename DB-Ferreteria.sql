@@ -227,6 +227,22 @@ create table TIPO_CLIENTE (
    constraint PK_TIPO_CLIENTE primary key (TIPO_CLIENTE_CODIGO)
 );
 
+
+/*==============================================================*/
+/* Table: INVENTARIO                                            */
+/*==============================================================*/
+create table AUDITORIAINVENTARIO (
+   AUDITORIAINVENTARIO_COD      SERIAL         NOT null,
+   SUCURSAL_CODIGO      INT4                 NOT null,
+   PRODUCTO_CODIGO     INT4                 NOT null,
+   INVENTARIO_CANTIDAD_BODEGA INT4                 NOT null,
+   INVENTARIO_CANTIDAD_BODEGA_ACTUALIZADO INT4     NOT null,
+   USUARIO              VARCHAR(50)                NOT null,
+   FECHA                DATE                       NOT null,
+   TIEMPO				TIME					   NOT null,
+   constraint PK_AUDITORIAINVENTARIO primary key (AUDITORIAINVENTARIO_COD)
+);
+
 alter table CLIENTE
    add constraint FK_CLIENTE_RELATIONS_TIPO_CLI foreign key (TIPO_CLIENTE_CODIGO)
       references TIPO_CLIENTE (TIPO_CLIENTE_CODIGO)
