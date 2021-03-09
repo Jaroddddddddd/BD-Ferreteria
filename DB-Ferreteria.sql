@@ -14,7 +14,7 @@ drop table DETALLE_FACTURA;
 
 drop table DETALLE_LOTE;
 
-drop table EMPLEADOS;
+drop table EMPLEADO;
 
 drop table FACTURA;
 
@@ -24,15 +24,16 @@ drop table LOTE;
 
 drop table MARCA;
 
-drop table PERMISOS;
+drop table PERMISO;
 
-drop table PRODUCTOS;
+drop table PRODUCTO;
 
 drop table PROVEDOR;
 
 drop table SUCURSAL;
 
 drop table TIPO_CLIENTE;
+
 
 /*==============================================================*/
 /* Table: CARGO                                                 */
@@ -64,6 +65,7 @@ create table CLIENTE (
    CLIENTE_TELEFONO     INT4                 not null,
    CLIENTE_DIRECCION    VARCHAR(100)         not null,
    CLIENTE_CORREO       VARCHAR(50)          not null,
+   CLIENTE_FECHAN       DATE          not null,
    constraint PK_CLIENTE primary key (CLIENTE_CEDULA)
 );
 
@@ -90,23 +92,24 @@ create table DETALLE_LOTE (
 );
 
 /*==============================================================*/
-/* Table: EMPLEADOS                                             */
+/* Table: EMPLEADO                                             */
 /*==============================================================*/
-create table EMPLEADOS (
-   EMPLEADOS_CODIGO     VARCHAR(10)          not null,
+create table EMPLEADO (
+   EMPLEADO_CODIGO     VARCHAR(10)          not null,
    CARGO_CODIGO         VARCHAR(5)           null,
    SUCURSAL_CODIGO      INT4                 null,
-   EMPLEADOS_CEDULA     INT4                 not null,
-   EMPLEADOS_APELLIDOS  VARCHAR(30)          not null,
-   EMPLEADOS_NOMBRE     VARCHAR(30)          not null,
-   EMPLEADOS_DIRECCION  VARCHAR(100)         not null,
-   EMPLEADOS_TELEFONO_FIJO INT4                 null,
-   EMPLEADOS_TELEFONO_MOVIL INT4                 not null,
-   EMPLEADOS_CORREO     VARCHAR(30)          not null,
-   EMPLEADOS_SUELDO_NETO NUMERIC              not null,
-   EMPLEADOS_SEGURO_SOCIAL NUMERIC              not null,
-   EMPLEADOS_SUELDO_TOTAL NUMERIC              not null,
-   constraint PK_EMPLEADOS primary key (EMPLEADOS_CODIGO)
+   EMPLEADO_CEDULA     INT4                 not null,
+   EMPLEADO_APELLIDOS  VARCHAR(30)          not null,
+   EMPLEADO_NOMBRE     VARCHAR(30)          not null,
+   EMPLEADO_DIRECCION  VARCHAR(100)         not null,
+   EMPLEADO_TELEFONO_FIJO INT4                 null,
+   EMPLEADO_TELEFONO_MOVIL INT4                 not null,
+   EMPLEADO_CORREO     VARCHAR(30)          not null,
+   EMPLEADO_SUELDO_NETO NUMERIC              not null,
+   EMPLEADO_SEGURO_SOCIAL NUMERIC              not null,
+   EMPLEADO_SUELDO_TOTAL NUMERIC              not null,
+   EMPLEADO_FECHAN NUMERIC              not null,
+   constraint PK_EMPLEADOS primary key (EMPLEADO_CODIGO)
 );
 
 /*==============================================================*/
@@ -159,30 +162,30 @@ create table MARCA (
 );
 
 /*==============================================================*/
-/* Table: PERMISOS                                              */
+/* Table: PERMISO                                              */
 /*==============================================================*/
-create table PERMISOS (
-   PERMISOS_CODIGO      INT4                 not null,
+create table PERMISO (
+   PERMISO_CODIGO      INT4                 not null,
    CARGO_CODIGO         VARCHAR(5)           null,
-   PERMISOS_INVENTARIO  boolean              not null,
-   PERMISOS_FACTURACION boolean              not null,
-   PERMISOS_REPORTES    boolean              not null,
-   PERMISOS_ROLES       boolean              not null,
-   constraint PK_PERMISOS primary key (PERMISOS_CODIGO)
+   PERMISO_INVENTARIO  boolean              not null,
+   PERMISO_FACTURACION boolean              not null,
+   PERMISO_REPORTES    boolean              not null,
+   PERMISO_ROLES       boolean              not null,
+   constraint PK_PERMISO primary key (PERMISO_CODIGO)
 );
 
 
 /*==============================================================*/
-/* Table: PRODUCTOS                                             */
+/* Table: PRODUCTO                                             */
 /*==============================================================*/
-create table PRODUCTOS (
-   PRODUCTOS_CODIGO     INT4                 not null,
+create table PRODUCTO (
+   PRODUCTO_CODIGO     INT4                 not null,
    MARCA_CODIGO         INT4                 null,
    CATEGORIA_CODIGO     INT4                 null,
    PROVEEDOR_CODIGO     INT4                 null,
-   PRODUCTOS_DESCRIPCION VARCHAR(100)         not null,
-   PRODUCTOS_PRECIO_UNITARIO NUMERIC              not null,
-   constraint PK_PRODUCTOS primary key (PRODUCTOS_CODIGO)
+   PRODUCTO_DESCRIPCION VARCHAR(100)         not null,
+   PRODUCTO_PRECIO_UNITARIO NUMERIC              not null,
+   constraint PK_PRODUCTO primary key (PRODUCTO_CODIGO)
 );
 
 /*==============================================================*/
@@ -231,7 +234,7 @@ alter table CLIENTE
 
 alter table DETALLE_FACTURA
    add constraint FK_DETALLE__DETALLE_F_PRODUCTO foreign key (PRODUCTOS_CODIGO)
-      references PRODUCTOS (PRODUCTOS_CODIGO)
+      references PRODUCTO (PRODUCTO_CODIGO)
       on delete restrict on update restrict;
 
 alter table DETALLE_FACTURA
@@ -246,15 +249,15 @@ alter table DETALLE_LOTE
 
 alter table DETALLE_LOTE
    add constraint FK_DETALLE__DETALLE_L_PRODUCTO foreign key (PRODUCTOS_CODIGO)
-      references PRODUCTOS (PRODUCTOS_CODIGO)
+      references PRODUCTO (PRODUCTO_CODIGO)
       on delete restrict on update restrict;
 
-alter table EMPLEADOS
+alter table EMPLEADO
    add constraint FK_EMPLEADO_RELATIONS_CARGO foreign key (CARGO_CODIGO)
       references CARGO (CARGO_CODIGO)
       on delete restrict on update restrict;
 
-alter table EMPLEADOS
+alter table EMPLEADO
    add constraint FK_EMPLEADO_RELATIONS_SUCURSAL foreign key (SUCURSAL_CODIGO)
       references SUCURSAL (SUCURSAL_CODIGO)
       on delete restrict on update restrict;
@@ -276,7 +279,7 @@ alter table INVENTARIO
 
 alter table INVENTARIO
    add constraint FK_INVENTAR_RELATIONS_PRODUCTO foreign key (PRODUCTOS_CODIGO)
-      references PRODUCTOS (PRODUCTOS_CODIGO)
+      references PRODUCTO (PRODUCTO_CODIGO)
       on delete restrict on update restrict;
 
 alter table LOTE
@@ -289,22 +292,22 @@ alter table LOTE
       references PROVEDOR (PROVEEDOR_CODIGO)
       on delete restrict on update restrict;
 
-alter table PERMISOS
+alter table PERMISO
    add constraint FK_PERMISOS_RELATIONS_CARGO foreign key (CARGO_CODIGO)
       references CARGO (CARGO_CODIGO)
       on delete restrict on update restrict;
 
-alter table PRODUCTOS
+alter table PRODUCTO
    add constraint FK_PRODUCTO_RELATIONS_PROVEDOR foreign key (PROVEEDOR_CODIGO)
       references PROVEDOR (PROVEEDOR_CODIGO)
       on delete restrict on update restrict;
 
-alter table PRODUCTOS
+alter table PRODUCTO
    add constraint FK_PRODUCTO_RELATIONS_MARCA foreign key (MARCA_CODIGO)
       references MARCA (MARCA_CODIGO)
       on delete restrict on update restrict;
 
-alter table PRODUCTOS
+alter table PRODUCTO
    add constraint FK_PRODUCTO_RELATIONS_CATEGORI foreign key (CATEGORIA_CODIGO)
       references CATEGORIA (CATEGORIA_CODIGO)
       on delete restrict on update restrict;
