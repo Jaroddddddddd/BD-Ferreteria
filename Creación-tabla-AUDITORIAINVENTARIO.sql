@@ -1,6 +1,6 @@
 
 /*==============================================================*/
-/* Table: INVENTARIO                                            */
+/* Table: AUDITORIAINVENTARIO                                            */
 /*==============================================================*/
 create table AUDITORIAINVENTARIO (
    AUDITORIAINVENTARIO_COD      SERIAL         NOT null,
