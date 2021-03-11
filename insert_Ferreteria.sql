@@ -666,3 +666,239 @@ Insert into DETALLE_FACTURA values (74,24,2,3,12.50);
 
 Insert into FACTURA values (25,1315332336,'2020-11-30',0,72.00,8.64,80.64,3);
 Insert into DETALLE_FACTURA values (70,25,10,3,72.00);
+
+
+
+
+select * from cliente;
+insert into cliente values('1315332336',1,'1315332336001','Mendoza Anchundia','Jarod Dennis',2458761,'Manta','jarodmendoza@gmail.com','1/3/2021','Masculino');
+insert into cliente values('1315852451',1,'1315852451001','Lucas Perez','Miguel Angel',2155548,'Manta','miguellucas@gmail.com','2/3/2021','Masculino');
+insert into cliente values('1301545145',1,'1301545145001','Santana Mendoza','Jose Luis',2156248,'Manta','josesantana@gmail.com','3/3/2021','Masculino');
+insert into cliente values('1315424851',1,'1315424851001','Mendoza Pinargoti','Jaime Pedro',2318546,'Manta','jaimemendoza@gmail.com','20/2/2021','Masculino');
+insert into cliente values('1315482485',1,'1315482485001','Reyes Rodrigues','Carla Samanta',2589642,'Manta','carlareyes@gmail.com','22/2/2021','Femenino');
+insert into cliente values('1315572148',1,'1315572148001','Mendoza Holguin','Carolina Sofia',2148675,'Manta','carolinamendoza@gmail.com','5/3/2021','Femenino');
+
+
+
+insert into tipo_cliente values (1,'Normal',0);
+insert into tipo_cliente values (2,'Afiliado',20);
+insert into tipo_cliente values (3,'Preferencial',10);
+insert into tipo_cliente values (4,'Tercera Edad',10);
+
+delete from factura;
+
+Insert into FACTURA values (1,1315332336,1,'2021-3-1',0,343.9,41.27,385.17,'Masculino');
+Insert into FACTURA values (2,1315852451,1,'2021-3-1',0,63.65,7.64,71.29,'Masculino');
+Insert into FACTURA values (3,1315332336,1,'2021-3-1',0,310.50,37.26,347.76,'Masculino');
+Insert into FACTURA values (4,1315332336,1,'2021-3-1',0,11.7,1.4,13.1,'Masculino');
+Insert into FACTURA values (5,1301545145,1,'2021-3-1',0,72.00,8.64,80.64,'Masculino');
+Insert into FACTURA values (6,1315424851,1,'2021-3-1',0,329.40,39.53,368.93,'Masculino');
+Insert into FACTURA values (7,1315482485,1,'2021-3-1',0,102.40,12.29,114.69,'Masculino');
+Insert into FACTURA values (8,1315572148,1,'2021-3-1',22.10,110.50,13.26,121.40,'Masculino');
+Insert into FACTURA values (9,1315852451,1,'2021-3-1',5.6,28.00,3.36,25.76,'Masculino');
+Insert into FACTURA values (10,1301545145,1,'2021-3-1',53.9,269.50,32.34,247.94,'Masculino');
+Insert into FACTURA values (11,1315332336,1,'2021-3-1',3.2,16.00,1.92,14.74,'Masculino');
+Insert into FACTURA values (12,1315332336,1,'2021-3-1',0.72,3.6,0.45,3.33,'Masculino');
+Insert into FACTURA values (13,1315332336,1,'2021-3-1',21.08,105.4,12.65,96.97,'Masculino');
+Insert into FACTURA values (14,1315332336,1,'2021-3-1',11.9,119.00,14.28,121.38,'Masculino');
+Insert into FACTURA values (15,1315332336,1,'2021-3-1',22.00,220.00,26.4,224.4,'Masculino');
+Insert into FACTURA values (16,1315332336,1,'2021-3-1',0,100.00,12.00,112.00,'Femenino');
+Insert into FACTURA values (17,1315332336,1,'2021-3-1',22.00,220.00,26.4,224.4,'Femenino');
+Insert into FACTURA values (18,1315332336,1,'2021-3-1',22.00,220.00,26.4,224.4,'Femenino');
+Insert into FACTURA values (19,1315332336,1,'2021-3-1',11.9,119.00,14.28,121.38,'Femenino');
+Insert into FACTURA values (20,1315332336,1,'2021-3-1',28.00,280.00,33.60,285.60,'Femenino');
+Insert into FACTURA values (21,1315482485,1,'2021-2-1',0,329.40,39.53,368.93,'Femenino');
+Insert into FACTURA values (22,1315482485,1,'2021-2-1',0,343.9,41.27,385.17,'Femenino');
+Insert into FACTURA values (23,1315332336,1,'2021-2-1',0,63.65,7.64,71.29,'Masculino');
+Insert into FACTURA values (24,1315332336,1,'2021-2-1',0,310.50,37.26,347.76,'Masculino');
+Insert into FACTURA values (25,1315332336,1,'2021-2-1',0,72.00,8.64,80.64,'Masculino');
+
+select * from factura;
+
+
+select * from cargo;
+
+Insert into CARGO values ('GEGE','Gerente General');
+Insert into CARGO values ('JRHU','Jefe de Recursos Humanos');
+Insert into CARGO values ('JEBO','Jefe de Bodega');
+Insert into CARGO values ('BODE','Bodeguero');
+Insert into CARGO values ('CARG','Cargador');
+Insert into CARGO values ('VEND','Vendedor');
+Insert into CARGO values ('AAAC','Agente de atención al cliente');
+Insert into CARGO values ('CONT','Contador');
+Insert into CARGO values ('GUSE','Guardia de seguridad');
+
+ALTER TABLE factura ADD COLUMN factura_vendedor int4;
+ALTER TABLE factura DROP COLUMN factura_vendedor;
+ALTER TABLE factura ADD COLUMN factura_vendedor varchar(5);
+
+select * from FACTURA;
+
+Insert into FACTURA values (1,1315332336,1,'2021-3-1',0,343.9,41.27,385.17,'Masculino','E31');
+Insert into FACTURA values (2,1315852451,1,'2021-3-1',0,63.65,7.64,71.29,'Masculino','E31');
+Insert into FACTURA values (3,1315332336,1,'2021-3-1',0,310.50,37.26,347.76,'Masculino','E38');
+Insert into FACTURA values (4,1315332336,1,'2021-3-1',0,11.7,1.4,13.1,'Masculino','E37');
+Insert into FACTURA values (5,1301545145,1,'2021-3-1',0,72.00,8.64,80.64,'Masculino','E36');
+Insert into FACTURA values (6,1315424851,1,'2021-3-1',0,329.40,39.53,368.93,'Masculino','E35');
+Insert into FACTURA values (7,1315482485,1,'2021-3-1',0,102.40,12.29,114.69,'Masculino','E34');
+Insert into FACTURA values (8,1315572148,1,'2021-3-1',22.10,110.50,13.26,121.40,'Masculino','E33');
+Insert into FACTURA values (9,1315852451,1,'2021-3-1',5.6,28.00,3.36,25.76,'Masculino','E32');
+Insert into FACTURA values (10,1301545145,1,'2021-3-1',53.9,269.50,32.34,247.94,'Masculino','E31');
+Insert into FACTURA values (11,1315332336,1,'2021-3-1',3.2,16.00,1.92,14.74,'Masculino','E38');
+Insert into FACTURA values (12,1315332336,1,'2021-3-1',0.72,3.6,0.45,3.33,'Masculino','E37');
+Insert into FACTURA values (13,1315332336,1,'2021-3-1',21.08,105.4,12.65,96.97,'Masculino','E36');
+Insert into FACTURA values (14,1315332336,1,'2021-3-1',11.9,119.00,14.28,121.38,'Masculino','E35');
+Insert into FACTURA values (15,1315332336,1,'2021-3-1',22.00,220.00,26.4,224.4,'Masculino','E34');
+Insert into FACTURA values (16,1315332336,1,'2021-3-1',0,100.00,12.00,112.00,'Femenino','E33');
+Insert into FACTURA values (17,1315332336,1,'2021-3-1',22.00,220.00,26.4,224.4,'Femenino','E32');
+Insert into FACTURA values (18,1315332336,1,'2021-3-1',22.00,220.00,26.4,224.4,'Femenino','E31');
+Insert into FACTURA values (19,1315332336,1,'2021-3-1',11.9,119.00,14.28,121.38,'Femenino','E32');
+Insert into FACTURA values (20,1315332336,1,'2021-3-1',28.00,280.00,33.60,285.60,'Femenino','E33');
+Insert into FACTURA values (21,1315482485,1,'2021-2-1',0,329.40,39.53,368.93,'Femenino','E34');
+Insert into FACTURA values (22,1315482485,1,'2021-2-1',0,343.9,41.27,385.17,'Femenino','E35');
+Insert into FACTURA values (23,1315332336,1,'2021-2-1',0,63.65,7.64,71.29,'Masculino','E36');
+Insert into FACTURA values (24,1315332336,1,'2021-2-1',0,310.50,37.26,347.76,'Masculino','E37');
+Insert into FACTURA values (25,1315332336,1,'2021-2-1',0,72.00,8.64,80.64,'Masculino','E38');
+
+ALTER TABLE empleado DROP COLUMN empleado_fechan;
+ALTER TABLE empleado ADD COLUMN empleado_fechan date;
+
+Insert into EMPLEADO values ('E1','AAAC',1,1315215546,'Vargas Pineda','Alejandra','calle 13 entre avenidas 7 y 8 edificio Luizan',22462864,0998200047,'vargasalejandra@gmail.com',800.00,75.6,724.4,'2000-10-5');
+Insert into EMPLEADO values ('E2','GEGE',1,1315451248,'Cuadra Vásquez','Fernando','Malecón y calle 14',22334455,0933254585,'cuadrafernandoz@gmail.com',1400,132.3,1276.7,'2000-10-5');
+Insert into EMPLEADO values ('E3','JEBO',1,1315478655,'Padilla Cardona','Juan','ave. 4 # 1239 – 1245 entre calles 12 y 13',22689654,0999865352,'juanpadilla@gmail.com',800.00,75.6,724.4,'2000-10-5');
+Insert into EMPLEADO values ('E4','JRHU',1,1315749245,'Bennett García','Rosa','Ave. 4 de Noviembre C.C. Paseo Shopping',22363658,0999635214,'rosabennrtt@gmail.com',800.00,75.6,724.4,'2000-10-5');
+Insert into EMPLEADO values ('E5','JRHU',1,1315315652,'Reyes Vargas','Andrés','ave. 2 entre calles 12 y 13',23147360,0933589610,'andresreyes@gmail.com',800.00,75.6,724.4,'2000-10-5');
+Insert into EMPLEADO values ('E6','CONT',1,1315485585,'Verde Godoy','Miguel',' Malecón de Tarqui calle 109, frente al mar, al pie de la nueva vía Puerto-Aeropuerto.',25361478,0934521589,'miguelverde@gmail.com',800.00,75.6,724.4,'2000-10-5');
+Insert into EMPLEADO values ('E7','GUSE',1,1315748954,'Maradiaga Peralta','Henry','Malecón y calle 24',25149898,0933251570,'henrymaradiaga@gmail.com',750.00,70.8,679.2,'2000-10-5');
+Insert into EMPLEADO values ('E8','GUSE',1,1315749485,'Rosales Arguijo','Norman','Calle 105 y avenida 109',22360014,0998632548,'normanrosales@gmail.com',750.00,70.8,679.2,'2000-10-5');
+Insert into EMPLEADO values ('E9','GUSE',1,1316451485,'Mendoza Verde','Antonio','Avenida 1 y calle 11',23451223,0999963251,'antoniomendoza@gmail.com',750.00,70.8,679.2,'2000-10-5');
+Insert into EMPLEADO values ('E10','AAAC',1,1315485546,'Vargas Mendoza','María','calle 17 y ave. 24',25653221,0933569025,'mariavargas@gmail.com',800.00,75.6,724.4,'2000-10-5');
+Insert into EMPLEADO values ('E11','AAAC',1,1315641788,'Pineda Cuadra','Jorge',' Avenida Flavio Reyes y calle 22',25548798,0999965325,'jorgepineda@gmail.com',800.00,75.6,724.4,'2000-10-5');
+Insert into EMPLEADO values ('E12','BODE',1,1315256545,'Carranza Padilla','Donaldo','ave. 7 y calle 17 Barrio Córdova',22362514,0933256395,'donaldocarranza@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E13','BODE',1,1315745245,'Mendoza Amaya','Erick','Ave. 3 calle 15',22589647,0934259681,'erickmendoza@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E14','BODE',1,1315485682,'Maradiaga Bennett','Ivan','Malecón y calle 17',22336644,0933002537,'ivanmaradiaga@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E15','BODE',2,1315415552,'Acosta Maradiaga','Cynthia',' Av. 24 y calle M-2',22558899,0998636585,'cynthiaacosta@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E16','BODE',2,1315785698,'Duarte Reyes','Shirley','Av. Circunvalación y Flavio Reyes',22447788,0999863258,'shirleyduarte@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E17','BODE',2,1315524858,'Espino Rosales','Fernando','Vía Manta-San Mateo , Playa Piedra Larga',22221144,0934256988,'fernandoespino@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E18','CARG',2,1315548585,'López Ramos','Raúl','Avenida Flavio Reyes y calle 20',22698574,0933885020,'raullopez@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E19','CARG',2,1314641857,'Ponce Duarte','Carlos',' Avenida 24 entre Flavio Reyes y 20',22547890,0999693698,'carlosponce@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E20','CARG',2,1315465448,'Rodríguez Acosta','Junior','Avenida 1 y calle 12',22023654,0933562541,'juniorrodriguez@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E21','CARG',2,1315645752,'Calderón Mendoza','David','Flavio Reyes y ave. 21',22759685,0999865896,'davidcalderon@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E22','CARG',3,1315478945,'Escobar Carranza','Víctor','Ave. Circunvalación y vía San Mateo',22859132,0933520021,'victorescobar@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E23','CARG',3,1315457925,'Cruz Dubón','Yadira','Malecón entre calles 15 y 16',23960120,0933560020,'yadiracruz@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E24','CARG',3,1315146545,'Tróchez Calderón','Conny','Vía Jaramijó- Entrada aeropuerto',24251010,0999006525,'connytrochez@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E25','CARG',3,1315647894,'Rosales Ponce','Saúl','calle 19 y malecón Edif. El Navio',22000036,0995287536,'saulrosales@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E26','BODE',2,1315488943,'Flores López','Alexa',' ave. Malecón s/n y calle 23',22150308,0909854752,'alexaflores@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E27','BODE',3,1315486723,'Tróchez Cruz','Eliana','ave. de la cultura',24125050,0995362541,'elianatrochez@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E28','BODE',1,1315478524,'López Gutiérrez','Nolvia','ave. 2 y calle 13',24213232,0996325487,'nolvialopez@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E29','BODE',1,1313588745,'López Vaquedano','Ramón',' malecón y calle 14',22896301,0997523654,'ramongutierrez@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E30','BODE',1,1314884742,'Escobar Tróchez','José','ave. malecón y calle 17 Esq',22458703,0998745213,'joseescobar@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E31','VEND',1,1312635487,'Sarmiento Espino','José','ave. 2 entre calles 12 y 13',24501523,0995004875,'josesarmiento@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E32','VEND',2,1315574887,'Santamaria Escobar','Jorge','Ave. 2 entre calles 11 y 12',27259653,0997526325,'jorgesantamaria@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E34','VEND',3,1315457415,'Matamoros Rodríguez','Eduardo','ave. 8 entre calles 12 y 13',24121202,0998632587,'eduardomatamoros@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E35','VEND',1,1315145412,'Van Nistelrooy','Ruth','ave. 2 entre calles 18 y 19',22309483,0933630356,'ruthvam@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E36','VEND',1,1315174896,'Gutiérrez Matamoros','Alberto','ave. 22 entre calles 12 y 13',22485120,0995870005,'albertogutierrez@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E37','VEND',1,1315498552,'Dubón Sarmiento','Ana','ave. 21 entre calles 16 y 17',23629584,0933025400,'anadubon@gmail.com',600.00,56.7,543.3,'2000-10-5');
+Insert into EMPLEADO values ('E38','VEND',1,1315485982,'Vaquedano López','Edsson','ave. 11 entre calles 10 y 11',25848471,0995200037,'edssonvaquedano@gmail.com',600.00,56.7,543.3,'2000-10-5');
+
+SELECT *FROM EMPLEADO;
+
+
+
+
+
+--Procedimiento Almacenado
+select 
+empleado.empleado_codigo as Codigo,
+cargo.cargo_nombre as Cargo,
+sucursal.sucursal_nombre as Sucural,
+(empleado.empleado_apellidos || ' ' || empleado.empleado_nombre) as Nombre,
+count(factura.factura_codigo) as Cantidad_Ventas_Totales,
+sum(factura.factura_total) as Total_ventas
+from empleado
+inner join cargo on cargo.cargo_codigo = empleado.cargo_codigo
+inner join sucursal on sucursal.sucursal_codigo =empleado.sucursal_codigo
+inner join factura on factura.factura_vendedor = empleado.empleado_codigo
+where empleado.empleado_codigo='E31'
+group by
+Codigo,
+Cargo,
+Sucural,
+Nombre;
+
+
+
+
+Insert into SUCURSAL values (1,'Sucursal A',22453333,'mailsucursalA@gmail.com','Calle 15, Avenidad 15', 'Manta', 'Ecuador');
+Insert into SUCURSAL values (2,'Sucursal B',22241698,'mailsucursalB@gmail.com','Av de las Américas y José Alavedra Tama', 'Guayaquil', 'Ecuador');
+Insert into SUCURSAL values (3,'Sucursal C',23454563,'mailsucursalC@gmail.com','Juan León Mera Nro. 19-36 y Av. Patria', 'Quito', 'Ecuador');
+select * from sucursal;
+
+insert into PROVEDOR values (1,'ProveedorA','Guaranda 1801 y Venezuela (esq)',22453333,'mailproveedorA@gmail','Ecuador','Guayaquil');
+insert into MARCA values (1,'Stanley');
+insert into CATEGORIA values (1,'Herramientas Electricas');
+
+Insert into PRODUCTO values (1,1,1,1,'Caladora 120V',125.00);
+Insert into PRODUCTO values (2,1,1,1,'Taladro 1/2 120V',135.00);
+Insert into PRODUCTO values (3,1,1,1,'Taladro 1/2 120V con rotomartillo',220.00);
+Insert into PRODUCTO values (4,1,1,1,'Taladro 3/8 portátil',110.00);
+
+
+Insert into INVENTARIO values (1,1,1,50);
+SELECT * FROM INVENTARIO;
+
+update INVENTARIO set 
+INVENTARIO_CANTIDAD_BODEGA = 50
+WHERE INVENTARIO_CODIGO = 1
+
+SELECT * FROM AUDITORIAINVENTARIO;
+
+
+
+
+
+
+
+/==============================================================/
+/* Table: MANTENIMIENTO                                         */
+/==============================================================/
+create table AUDITORIA_MANTENIMIENTO (
+   COD_AUDITORIAMANTENIMIENTO    SERIAL                 not null,
+   COD_EMPLEADO         INT4                 null,
+   CLIENTE_CEDULA       INT4                 null,
+   MANTENIMIENTO_FECHA_INGRESO DATE                 not null,
+   MANTENIMIENTO_FECHA_SALIDA DATE                 not null,
+   MANTENIMIENTO_SOLUCION CHAR(2)              not null,
+   SERIE_EQUIPO         VARCHAR(100)         not null,
+   MANTENIMIENTO_CONDICION VARCHAR(500)         not null,
+   MANTENIMIENTO_COSTO  NUMERIC              not null,
+   USUARIO_ELIMINO      VARCHAR(50)                NOT null,
+   FECHA_ELIMINO       DATE                       NOT null,
+   constraint PK_MANTENIMIENTO primary key (COD_AUDITORIAMANTENIMIENTO)
+);
+
+CREATE OR REPLACE FUNCTION Trigger_Auditoria_Mantenimiento() 
+RETURNS TRIGGER AS
+$$
+DECLARE
+BEGIN
+	insert into AUDITORIA_MANTENIMIENTO(COD_EMPLEADO,CLIENTE_CEDULA,
+									MANTENIMIENTO_FECHA_INGRESO,
+									MANTENIMIENTO_FECHA_SALIDA,
+								    MANTENIMIENTO_SOLUCION,SERIE_EQUIPO,
+									MANTENIMIENTO_CONDICION,MANTENIMIENTO_COSTO,
+									USUARIO_ELIMINO,FECHA_ELIMINO) 
+									VALUES(OLD.COD_EMPLEADO, OLD.CLIENTE_CEDULA,
+										  OLD.MANTENIMIENTO_FECHA_INGRESO,
+										  old.MANTENIMIENTO_FECHA_SALIDA,
+										  OLD.MANTENIMIENTO_SOLUCION,
+										  OLD.SERIE_EQUIPO, OLD.MANTENIMIENTO_CONDICION,
+										  OLD.MANTENIMIENTO_COSTO, OLD.USUARIO_ELIMINO,
+										  OLD.FECHA_ELIMINO,current_user,current_date);
+  return new;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER Trigger_Auditoria_Mantenimiento before delete
+on MANTENIMIENTO for each row
+EXECUTE PROCEDURE Trigger_Auditoria_Mantenimiento();
